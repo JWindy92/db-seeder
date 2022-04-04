@@ -1,16 +1,35 @@
-database:
-  engine: mongo
-  username: root
-  password: toor
-
-models:
-  users:
-    fields:
-      - first_name
-      - last_name
-    num_records: 20
-  posts:
-    fields:
-      - title
-      - body
-    num_records: 50
+databases:
+  data-lake:
+    engine: mongo
+    host: 127.0.0.1
+    port: 27017
+    username: root
+    password: root
+    models:
+      users:
+        fields:
+          - first_name
+          - last_name
+        num_records: 20
+      posts:
+        fields:
+          - title
+          - body
+        num_records: 50
+  app-db:
+    engine: mysql
+    host: 127.0.0.1
+    port: 9999
+    username: root
+    password: root
+    models:
+      users:
+        fields:
+          - first_name
+          - last_name
+        num_records: 20
+      posts:
+        fields:
+          - title
+          - body
+        num_records: 50

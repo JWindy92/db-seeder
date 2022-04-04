@@ -1,6 +1,5 @@
 import yaml
-import databases.mongo
-import databases.mysql
+import databases.dbwrapper
 
 def load_config():
     with open("config.yml", "r") as config:
@@ -12,21 +11,19 @@ def load_config():
 class Seeder:
     def __init__(self):
         config = load_config()
-        self.database = config['database']
-        self.models = config['models']
+        self.databases = config['databases']
 
-        self.connect_to_db()
+    def seed_dbs(self):
+        for db in self.databases:
+            print(f"Seeding {db}")
+            config = self.databases[db]
+            conn = databases.dbwrapper.DbConnection(config)
+            conn.seed()
+            conn.template_func()
 
-    def connect_to_db(self):
-        print(self.database['engine'])
-        if self.database['engine'] == "mongo":
-            databases.mongo.connect()
-        elif self.database['engine'] == "mysql":
-            databases.mysql.connect()
-        else:
-            print("Unsupported database engine")
 
 if __name__ == '__main__':
 
     seeder = Seeder()
+    seeder.seed_dbs()
 

@@ -1,4 +1,9 @@
 # Connect to mysql db
 
-def connect():
-    print("Connecting to mysqldb")
+class MySQLConnection:
+
+    def __init__(self, config):
+        print(f"Connecting to MySQL")
+
+    def template_func(self):
+        print("calling from mysql")
