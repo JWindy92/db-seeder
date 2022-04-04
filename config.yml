@@ -1,0 +1,16 @@
+database:
+  engine: mongo
+  username: root
+  password: toor
+
+models:
+  users:
+    fields:
+      - first_name
+      - last_name
+    num_records: 20
+  posts:
+    fields:
+      - title
+      - body
+    num_records: 50
